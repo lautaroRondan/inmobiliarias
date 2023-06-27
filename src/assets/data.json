@@ -1,0 +1,27 @@
+{
+    "kindOfProperty": [
+        {
+            "id": 1,
+            "name": "Casa"
+        },
+        {
+            "id": 2,
+            "name": "Departamento"
+            
+        },
+        {
+            "id": 3,
+            "name": "Terreno"
+        }
+    ],
+    "operation":[
+        {
+            "id":1,
+            "name": "Compra"
+        },
+        {
+            "id":2,
+            "name": "Alquiler"
+        }
+    ]
+}
