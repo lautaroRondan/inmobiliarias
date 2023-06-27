@@ -166,6 +166,8 @@ body {
   justify-content: center;
   margin-top: 20px;
   align-content: center;
+  margin-left: 50%;
+  margin-right: 50%;
   }
   /* paginacion */
   .pagination {
