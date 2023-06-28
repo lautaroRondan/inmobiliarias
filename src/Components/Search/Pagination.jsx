@@ -3,6 +3,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
+    <div className='pagination-container'>
     <div className="pagination">
       {/* Iterar sobre cada página y mostrar un botón */}
       {pages.map((page) => (
@@ -14,6 +15,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           {page}
         </button>
       ))}
+    </div>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { PetitionFetch } from '../Helpers/PetitionFetch';
-import { Global } from '../Helpers/Global';
+import useFetch from '../Hooks/useFetch';
 import { Carousel } from 'react-responsive-carousel';
 import defaultImage from '../../assets/imagen-no-disponible.jpg';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -11,9 +10,13 @@ import houseIcon from "../../assets/house_location_icon.svg";
 import landIcon from "../../assets/land_location_icon.svg";
 
 const Property = () => {
+    const { sendRequest } = useFetch();
     const [property, setProperty] = useState([]);
     const params = useParams();
-    const [defaultLocation, setDefaultLocation] = useState({ });
+    const [defaultLocation, setDefaultLocation] = useState({
+        currentLocation: { lat: -33.4137493295515, lng: -70.5819047619479 },
+        zoom: 12,
+    });
 
     useEffect(() => {
         getProperty();
@@ -21,12 +24,12 @@ const Property = () => {
 
     // Obtener los detalles de la propiedad mediante una petición GET
     const getProperty = async () => {
-        const { datos } = await PetitionFetch(Global.url + 'property/' + params.id, 'GET');
-        if (datos.status === 'success') {
-            setProperty(datos.property);
+        const response = await sendRequest('property/' + params.id, 'GET')
+        console.log(response.cargando)
+        if (response.datos.status === 'success') {
+            setProperty(response.datos.property);
             setDefaultLocation({
-                lat: datos.property.coordinates[0],
-                lng: datos.property.coordinates[1],
+                currentLocation: { lat: response.datos.property.coordinates[0], lng: response.datos.property.coordinates[1] },
                 zoom: 12,
             });
         }
@@ -70,6 +73,9 @@ const Property = () => {
                     <p className="property-info">
                         <span className="info-label">Inmobiliaria: </span>
                         {property.inmobiliaria}</p>
+                    <p className="property-info">
+                        <span className="info-label">Operacion: </span>
+                        {property.operation}</p>
                 </div>
 
 

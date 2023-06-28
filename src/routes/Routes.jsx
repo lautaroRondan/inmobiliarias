@@ -2,18 +2,18 @@ import React from 'react'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import Footer from '../Components/Footer/Footer'
 import { Header } from '../Components/Header/Header'
-import Search from '../Components/Search/Search'
 import Property from '../Components/Property/Property'
+import Home from '../Components/Search/Home'
 
 const MyRoutes = () => {
   return (
-    <div className='layaot'>
+    <div className='layout'>
     <BrowserRouter>
      <Header/>
       
         <Routes>
-          <Route path='/' element={<Search/>}/>
-          <Route path='/search' element={<Search/>}/>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/search' element={<Home/>}/>
           <Route path='/property/:id' element={<Property/>}/>
         </Routes>
         <Footer/>
