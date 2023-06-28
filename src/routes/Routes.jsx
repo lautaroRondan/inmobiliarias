@@ -3,7 +3,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import Footer from '../Components/Footer/Footer'
 import { Header } from '../Components/Header/Header'
 import Property from '../Components/Property/Property'
-import Home from '../Components/Search/Home'
+import Home from '../Components/Home/Home'
 
 const MyRoutes = () => {
   return (
