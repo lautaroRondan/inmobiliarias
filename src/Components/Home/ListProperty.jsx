@@ -28,7 +28,7 @@ const ListProperty = ({ propertiesList }) => {
           >
               <img 
                 src={list.images && list.images.length > 0 ? list.images[0] : defaultImg}
-                alt="Imagen de propiedad"
+                alt={list.name}
               />
            
             <p className="description">{list.description}</p>
