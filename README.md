@@ -16,8 +16,7 @@ como levantar el proyecto en el localhost
 
 4- Iniciar el servidor local:
     -Una vez que las dependencias se hayan instalado correctamente, puedes iniciar el servidor localhost. Ejecuta el siguiente comando en la terminal: npm run dev
-    -Esto iniciará el servidor y tu aplicación de React con Vite estará disponible en http://localhost:5173.
 
 5- Verificar la aplicación en el navegador:
-    -Abre tu navegador web (como Google Chrome, Mozilla Firefox, etc.).
+    -Abre tu navegador web.
     -Visita http://localhost:5173 y deberías poder ver la pagina en funcionamiento.
