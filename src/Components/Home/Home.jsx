@@ -7,7 +7,7 @@ import useFetch from '../Hooks/useFetch';
 import departmentIcon from "../../assets/department_location_icon.svg";
 import houseIcon from "../../assets/house_location_icon.svg";
 import landIcon from "../../assets/land_location_icon.svg";
-import { async } from 'q';
+
 
 const Home = () => {
   const { sendRequest } = useFetch();
@@ -49,7 +49,7 @@ const Home = () => {
   const getLocations = async () => {
 
     const response = await sendRequest('list-property', 'GET')
-    if (response.datos.status === 'success') {
+    if (response && response.datos && response.datos.status === 'success') {
       setLocations(response.datos.properties);
       setTotalPages(Math.ceil(response.datos.properties.length / pageSize)); // Calcular el número total de páginas
     }
@@ -85,7 +85,7 @@ const Home = () => {
 
     const response = await sendRequest('search-property', 'POST', search)
     console.log(response.datos)
-    if (response.datos.status === 'success') {
+    if (response && response.datos && response.datos.status === 'success') {
       setLocations(response.datos.properties);
       // Calcular el número total de páginas
       setTotalPages(Math.ceil(response.datos.properties.length / pageSize));

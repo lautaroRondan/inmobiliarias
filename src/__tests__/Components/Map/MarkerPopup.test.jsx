@@ -1,22 +1,27 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import MarkerPopup from "../../../Components/Map/MarkerPopup";
 
-describe("MarkerPopup", () => {
-    it("renders marker popup with correct data", () => {
-      const data = {
-        name: "Example Name",
-        description: "Example Description",
-        address: "Example Address",
-        surface: "100",
-        city: "Example City",
-      };
-  
-      const { getByText } = render(<MarkerPopup data={data} />);
-  
-      expect(getByText(data.name)).toBeInTheDocument();
-      expect(getByText(data.description)).toBeInTheDocument();
-      expect(getByText(`Dirección: ${data.address}, ${data.city}`)).toBeInTheDocument();
-      expect(getByText(`Superficie: ${data.surface} m²`)).toBeInTheDocument();
-    });
-  });
+test("renders MarkerPopup component", () => {
+  const data = {
+    name: "Property Name",
+    description: "Property Description",
+    address: "Property Address",
+    surface: "100",
+    city: "Property City",
+  };
+
+  render(<MarkerPopup data={data} />);
+
+  const titleElement = screen.getByText("Property Name");
+  const descriptionElement = screen.getByText("Property Description");
+  const addressElement = screen.getByText("Property Address");
+  const surfaceElement = screen.getByText("100 m²");
+  const cityElement = screen.getByText("Property City");
+
+  expect(titleElement).toBeInTheDocument();
+  expect(descriptionElement).toBeInTheDocument();
+  expect(addressElement).toBeInTheDocument();
+  expect(surfaceElement).toBeInTheDocument();
+  expect(cityElement).toBeInTheDocument();
+});

@@ -1,26 +1,47 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import PropiertiesMarkers from "../../../Components/Map/PropertiesMarkers";
+import { render } from "@testing-library/react";
+import PropertiesMarkers from "../../../Components/Map/PropertiesMarkers";
+import PropertiesLocationIcon from "../../../Components/Map/PropertiesLocationIcon";
 
-test("renders markers for each data property", () => {
-  // Datos de ejemplo para las propiedades
-  const dataProperties = [
-    {
-        images: ['imagen1.jpg', 'imagen2.jpg'],
-        description: 'Descripción de ejemplo',
-        price: 100000,
-        surface: '100 metros cuadrados',
-        address: 'Dirección de ejemplo',
-        inmobiliaria: 'Inmobiliaria de ejemplo',
-        operation: 'Operación de ejemplo',
-        coordinates: [-33.43334002269013, -70.59227331810038]
-      }  ];
+// Mock dataProperties
+const dataProperties = [
+  {
+    _id: "1",
+    coordinates: [12.345, 67.89],
+    kindOfProperty: "house",
+    name: "House 1",
+    description: "Beautiful house",
+    address: "123 Main St",
+    surface: 200,
+    city: "City A",
+  },
+  {
+    _id: "2",
+    coordinates: [98.765, 43.21],
+    kindOfProperty: "apartment",
+    name: "Apartment 1",
+    description: "Spacious apartment",
+    address: "456 Elm St",
+    surface: 150,
+    city: "City B",
+  },
+];
 
-  // Renderiza el componente
-  render(<PropiertiesMarkers dataProperties={dataProperties} />);
+describe("PropertiesMarkers", () => {
+  test("renders markers with correct data for each property", () => {
+    const { container } = render(<PropertiesMarkers dataProperties={dataProperties} />);
 
-  // Verifica que se renderice un marcador por cada propiedad de datos
-  const markers = screen.getAllByTestId("marker");
+    // Check if the correct number of markers are rendered
+    expect(container.querySelectorAll(".marker").length).toBe(dataProperties.length);
 
-  expect(markers.length).toBe(dataProperties.length);
+    // Check if the data of each property is displayed correctly in the markers
+    dataProperties.forEach((property) => {
+      expect(container).toHaveTextContent(property._id);
+      expect(container).toHaveTextContent(property.coordinates);
+      // Add more assertions according to the data you want to verify
+
+      // Check if the correct icon is used based on the kindOfProperty
+      expect(container.querySelector(`[data-testid="icon-${property._id}"]`)).toHaveAttribute("src", PropertiesLocationIcon({ type: property.kindOfProperty }));
+    });
+  });
 });

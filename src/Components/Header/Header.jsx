@@ -10,11 +10,11 @@ export const Header = () => {
   }
 
   return (
-    <div className='header'>
+    <div className='header' data-testid='header'>
       <div className='logo' >
         {/* El span actúa como un enlace al inicio */}
         <a onClick={() => navigateHome()}>LR</a>
-        <h3>Inmobiliarias</h3>
+        {/* <h3>Inmobiliarias</h3> */}
       </div>
     </div>
   )
