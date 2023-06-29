@@ -31,16 +31,15 @@ describe("PropertiesMarkers", () => {
   test("renders markers with correct data for each property", () => {
     const { container } = render(<PropertiesMarkers dataProperties={dataProperties} />);
 
-    // Check if the correct number of markers are rendered
+    // Compruebe si se representa el número correcto de marcadores
     expect(container.querySelectorAll(".marker").length).toBe(dataProperties.length);
 
-    // Check if the data of each property is displayed correctly in the markers
+    // Comprueba si los datos de cada propiedad se muestran correctamente en los marcadores
     dataProperties.forEach((property) => {
       expect(container).toHaveTextContent(property._id);
       expect(container).toHaveTextContent(property.coordinates);
-      // Add more assertions according to the data you want to verify
 
-      // Check if the correct icon is used based on the kindOfProperty
+      // Compruebe si se utiliza el icono correcto según el tipo de propiedad
       expect(container.querySelector(`[data-testid="icon-${property._id}"]`)).toHaveAttribute("src", PropertiesLocationIcon({ type: property.kindOfProperty }));
     });
   });

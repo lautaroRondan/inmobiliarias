@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import L from "leaflet";
 import MapView from "../../../Components/Map/MapView";
+
 // Configuración de burla para archivos SVG
 jest.mock("../../../assets/department_location_icon.svg", () => require("../../../../__mocks__/mockSvgFile"));
 jest.mock("../../../assets/house_location_icon.svg", () => require("../../../../__mocks__/mockSvgFile"));

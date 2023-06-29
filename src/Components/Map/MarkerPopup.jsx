@@ -1,8 +1,9 @@
 import React from "react";
 import { Popup } from "react-leaflet";
+import "./Map.css"
 
 const MarkerPopup = (props) => {
-  const { name, description, address, surface, city } = props.data;
+  const { name, description, address, surface, city, operation } = props.data;
   return (
     <Popup>
       <div className="marker-popup">
@@ -13,6 +14,9 @@ const MarkerPopup = (props) => {
         </p>
         <p className="popup-info">
           <span className="info-label">Superficie:</span> {surface} m²
+        </p>
+        <p className="popup-info">
+          <span className="info-label">Operacion:</span> {operation} 
         </p>
       </div>
     </Popup>

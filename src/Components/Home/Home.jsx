@@ -7,7 +7,7 @@ import useFetch from '../Hooks/useFetch';
 import departmentIcon from "../../assets/department_location_icon.svg";
 import houseIcon from "../../assets/house_location_icon.svg";
 import landIcon from "../../assets/land_location_icon.svg";
-
+import "./Home.css";
 
 const Home = () => {
   const { sendRequest } = useFetch();
@@ -52,7 +52,6 @@ const Home = () => {
     if (response && response.datos && response.datos.status === 'success') {
       setLocations(response.datos.properties);
       setTotalPages(Math.ceil(response.datos.properties.length / pageSize)); // Calcular el número total de páginas
-      console.log(response.datos.properties.length )
       setLoading(response.cargando)
     }
   };
@@ -86,7 +85,7 @@ const Home = () => {
     };
 
     const response = await sendRequest('search-property', 'POST', search)
-   
+
     if (response && response.datos && response.datos.status === 'success') {
       setLocations(response.datos.properties);
       // Calcular el número total de páginas
@@ -109,7 +108,7 @@ const Home = () => {
   };
 
   // se podria hacer un componente con buen estilo para que el footer no aparezca arriba
-  if(loading){
+  if (loading) {
     return <h1>Cargando...</h1>
   }
 
@@ -145,15 +144,12 @@ const Home = () => {
         </div>
 
         {/* Paginación */}
-        
-          <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-        
+        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+
       </div>
       {/* Contenedor de mapa */}
       <div className='property-container'>
-        <div className="map-container">
           <MapView defaultLocation={defaultLocation} locations={locations} />
-        </div>
         <div>
           <p className="property-info-map"><img src={departmentIcon} width='10%' height='10%' /> Departamentos</p>
           <p className="property-info-map"><img src={houseIcon} width='10%' height='10%' /> Casas</p>

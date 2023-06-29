@@ -16,11 +16,14 @@ describe('Pagination', () => {
       </MemoryRouter>
     );
 
+    // Obtener todos los botones de paginación
     const paginationButtons = screen.getAllByRole('button');
 
+    // Verificar que los botones tengan el texto correcto
     paginationButtons.forEach((button, index) => {
       expect(button).toHaveTextContent((index + 1).toString());
 
+      // Verificar que el botón de la página actual tenga la clase "active"
       if (index + 1 === currentPage) {
         expect(button).toHaveClass('active');
       } else {
@@ -40,11 +43,16 @@ describe('Pagination', () => {
       </MemoryRouter>
     );
 
+    // Obtener todos los botones de paginación
     const paginationButtons = screen.getAllByRole('button');
 
+    // Simular un click en un botón específico
     fireEvent.click(paginationButtons[2]);
 
+    // Verificar que la función onPageChange se haya llamado una vez
     expect(onPageChange).toHaveBeenCalledTimes(1);
+
+    // Verificar que la función onPageChange se haya llamado con el número de página correcto
     expect(onPageChange).toHaveBeenCalledWith(3);
   });
 });

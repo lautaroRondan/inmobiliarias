@@ -8,16 +8,15 @@ import Home from '../Components/Home/Home'
 const MyRoutes = () => {
   return (
     <div className='layout'>
-    <BrowserRouter>
-     <Header/>
-      
+      <BrowserRouter>
+        <Header />
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/property/:id' element={<Property/>}/>
+          <Route path='/' element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/property/:id' element={<Property />} />
         </Routes>
-        <Footer/>
-    </BrowserRouter>
+        <Footer />
+      </BrowserRouter>
     </div>
   )
 }

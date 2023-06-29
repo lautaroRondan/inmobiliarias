@@ -39,21 +39,21 @@ describe('ListProperty', () => {
       </MemoryRouter>
     );
 
-    // Check if property items are rendered
+    // Comprobar si los elementos de propiedad se representan
     const propertyItems = screen.getAllByRole('button');
     expect(propertyItems.length).toBe(propertiesList.length);
 
-    // Check if property details are rendered correctly
+    // Compruebe si los detalles de la propiedad se representan correctamente
     propertiesList.forEach((property, index) => {
       const propertyItem = propertyItems[index];
 
-      // Check if image is rendered with the correct src and alt attributes
+      // Compruebe si la imagen se representa con los atributos src y alt correctos
       const image = propertyItem.querySelector('img');
       expect(image).toBeInTheDocument();
       expect(image.src).toEqual(expect.stringContaining(property.images[0]));
       expect(image.alt).toBe(property.name);
 
-      // Check if description, address, surface, and operation are rendered correctly
+      // Compruebe si la descripción, la dirección, la superficie y la operación se representan correctamente
       expect(propertyItem).toHaveTextContent(property.description);
       expect(propertyItem).toHaveTextContent(`Dirección: ${property.address}, ${property.city}`);
       expect(propertyItem).toHaveTextContent(`Tamaño: ${property.surface}m²`);

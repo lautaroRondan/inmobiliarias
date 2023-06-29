@@ -13,6 +13,7 @@ test("renders MarkerPopup component", () => {
 
   render(<MarkerPopup data={data} />);
 
+  // Verificar que los elementos de texto se rendericen correctamente
   const titleElement = screen.getByText("Property Name");
   const descriptionElement = screen.getByText("Property Description");
   const addressElement = screen.getByText("Property Address");
