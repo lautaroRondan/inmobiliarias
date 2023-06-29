@@ -29,7 +29,7 @@ body {
 }
 
   .footer {
-    border-top: 5px solid black;
+    border-top: 2px solid black;
     background: #fff;
     grid-area: footer;
     display: block;
