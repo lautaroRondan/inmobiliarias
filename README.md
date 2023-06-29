@@ -1,4 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/630147cc-f301-49d3-b369-62151560093b/deploy-status)](https://app.netlify.com/sites/chic-unicorn-022ac4/deploys)
 "# inmobiliarias" 
+
 como levantar el proyecto en el localhost
 
 1- Requisitos previos:
@@ -12,12 +14,20 @@ como levantar el proyecto en el localhost
 3- Instalar las dependencias del proyecto:
     -Abre una ventana de terminal y navega hasta el directorio raíz de este proyecto.
     -Ejecuta el siguiente comando para instalar las dependencias del proyecto definidas en el archivo package.json: npm install
-    -Esto instalará todas las bibliotecas y paquetes necesarios para que el proyecto funcione correctamente.
 
 4- Iniciar el servidor local:
     -Una vez que las dependencias se hayan instalado correctamente, puedes iniciar el servidor localhost. Ejecuta el siguiente comando en la terminal: npm run dev
-    -Esto iniciará el servidor y tu aplicación de React con Vite estará disponible en http://localhost:5173.
 
 5- Verificar la aplicación en el navegador:
-    -Abre tu navegador web (como Google Chrome, Mozilla Firefox, etc.).
+    -Abre tu navegador web 
     -Visita http://localhost:5173 y deberías poder ver la pagina en funcionamiento.
+
+como utilizar las pruebas unitarias
+
+1-Instalar las dependencias del proyecto (si las tenes instalada omitir este paso):
+    -Abre una ventana de terminal y navega hasta el directorio raíz de este proyecto.
+    -Ejecuta el siguiente comando para instalar las dependencias del proyecto definidas en el archivo package.json: npm test
+
+2- iniciar las pruebas unitarias:
+-Abre una ventana de terminal y navega hasta el directorio raíz de este proyecto.
+    -Ejecuta el siguiente comando para ejecutar las tests unitarios: npm test
