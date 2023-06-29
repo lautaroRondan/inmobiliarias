@@ -11,6 +11,7 @@ import landIcon from "../../assets/land_location_icon.svg";
 
 const Home = () => {
   const { sendRequest } = useFetch();
+  const [loading, setLoading] = useState(true)
   const [defaultLocation, setDefaultLocation] = useState({
     currentLocation: { lat: -33.4137493295515, lng: -70.5819047619479 },
     zoom: 12,
@@ -47,11 +48,12 @@ const Home = () => {
 
   // Obtener los detalles de las propiedades mediante una petición GET
   const getLocations = async () => {
-
     const response = await sendRequest('list-property', 'GET')
     if (response && response.datos && response.datos.status === 'success') {
       setLocations(response.datos.properties);
       setTotalPages(Math.ceil(response.datos.properties.length / pageSize)); // Calcular el número total de páginas
+      console.log(response.datos.properties.length )
+      setLoading(response.cargando)
     }
   };
 
@@ -84,13 +86,14 @@ const Home = () => {
     };
 
     const response = await sendRequest('search-property', 'POST', search)
-    console.log(response.datos)
+   
     if (response && response.datos && response.datos.status === 'success') {
       setLocations(response.datos.properties);
       // Calcular el número total de páginas
       setTotalPages(Math.ceil(response.datos.properties.length / pageSize));
       // Reiniciar la página actual a la primera página
       setCurrentPage(1);
+      setLoading(response.cargando)
     }
   };
 
@@ -104,6 +107,11 @@ const Home = () => {
     const endIndex = startIndex + pageSize;
     return locations.slice(startIndex, endIndex);
   };
+
+  // se podria hacer un componente con buen estilo para que el footer no aparezca arriba
+  if(loading){
+    return <h1>Cargando...</h1>
+  }
 
   return (
     <>
@@ -140,7 +148,6 @@ const Home = () => {
         
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
         
-
       </div>
       {/* Contenedor de mapa */}
       <div className='property-container'>

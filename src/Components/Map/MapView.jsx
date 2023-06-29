@@ -10,6 +10,7 @@ const MapView = ({ defaultLocation, locations }) => {
   const dataProperties = Array.isArray(locations) ? locations : [locations];
 
   return (
+    <div className="map-container">
     <MapContainer center={defaultLocation.currentLocation} zoom={defaultLocation.zoom}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -19,6 +20,7 @@ const MapView = ({ defaultLocation, locations }) => {
       {dataProperties.length > 0 && <Markers dataProperties={dataProperties} />
       }
     </MapContainer>
+    </div>
   );
 };
 

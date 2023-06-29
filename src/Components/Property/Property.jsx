@@ -81,9 +81,9 @@ const Property = () => {
 
             </div >
             <div className='property-container'>
-                <div className="map-container">
+                
                     <MapView defaultLocation={defaultLocation} locations={property} />
-                </div>
+                
                 <div>
                     <p className="property-info-map"><img src={departmentIcon} width='10%' height='10%' /> Departamentos</p>
                     <p className="property-info-map"><img src={houseIcon} width='10%' height='10%' /> Casas</p>
