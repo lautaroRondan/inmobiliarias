@@ -1,4 +1,3 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/630147cc-f301-49d3-b369-62151560093b/deploy-status)](https://app.netlify.com/sites/chic-unicorn-022ac4/deploys)
 "# inmobiliarias" 
 
 como levantar el proyecto en el localhost
