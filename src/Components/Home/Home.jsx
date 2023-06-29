@@ -7,10 +7,11 @@ import useFetch from '../Hooks/useFetch';
 import departmentIcon from "../../assets/department_location_icon.svg";
 import houseIcon from "../../assets/house_location_icon.svg";
 import landIcon from "../../assets/land_location_icon.svg";
-import { async } from 'q';
+import "./Home.css";
 
 const Home = () => {
   const { sendRequest } = useFetch();
+  const [loading, setLoading] = useState(true)
   const [defaultLocation, setDefaultLocation] = useState({
     currentLocation: { lat: -33.4137493295515, lng: -70.5819047619479 },
     zoom: 12,
@@ -47,11 +48,11 @@ const Home = () => {
 
   // Obtener los detalles de las propiedades mediante una petición GET
   const getLocations = async () => {
-
     const response = await sendRequest('list-property', 'GET')
-    if (response.datos.status === 'success') {
+    if (response && response.datos && response.datos.status === 'success') {
       setLocations(response.datos.properties);
       setTotalPages(Math.ceil(response.datos.properties.length / pageSize)); // Calcular el número total de páginas
+      setLoading(response.cargando)
     }
   };
 
@@ -84,13 +85,14 @@ const Home = () => {
     };
 
     const response = await sendRequest('search-property', 'POST', search)
-    console.log(response.datos)
-    if (response.datos.status === 'success') {
+
+    if (response && response.datos && response.datos.status === 'success') {
       setLocations(response.datos.properties);
       // Calcular el número total de páginas
       setTotalPages(Math.ceil(response.datos.properties.length / pageSize));
       // Reiniciar la página actual a la primera página
       setCurrentPage(1);
+      setLoading(response.cargando)
     }
   };
 
@@ -104,6 +106,11 @@ const Home = () => {
     const endIndex = startIndex + pageSize;
     return locations.slice(startIndex, endIndex);
   };
+
+  // se podria hacer un componente con buen estilo para que el footer no aparezca arriba
+  if (loading) {
+    return <h1>Cargando...</h1>
+  }
 
   return (
     <>
@@ -137,16 +144,12 @@ const Home = () => {
         </div>
 
         {/* Paginación */}
-        
-          <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-        
+        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
 
       </div>
       {/* Contenedor de mapa */}
       <div className='property-container'>
-        <div className="map-container">
           <MapView defaultLocation={defaultLocation} locations={locations} />
-        </div>
         <div>
           <p className="property-info-map"><img src={departmentIcon} width='10%' height='10%' /> Departamentos</p>
           <p className="property-info-map"><img src={houseIcon} width='10%' height='10%' /> Casas</p>

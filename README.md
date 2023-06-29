@@ -18,8 +18,9 @@ como levantar el proyecto en el localhost
     -Una vez que las dependencias se hayan instalado correctamente, puedes iniciar el servidor localhost. Ejecuta el siguiente comando en la terminal: npm run dev
 
 5- Verificar la aplicación en el navegador:
-    -Abre tu navegador web 
+    -Abre tu navegador web.
     -Visita http://localhost:5173 y deberías poder ver la pagina en funcionamiento.
+
 
 como utilizar las pruebas unitarias
 
@@ -30,3 +31,4 @@ como utilizar las pruebas unitarias
 2- iniciar las pruebas unitarias:
 -Abre una ventana de terminal y navega hasta el directorio raíz de este proyecto.
     -Ejecuta el siguiente comando para ejecutar las tests unitarios: npm test
+

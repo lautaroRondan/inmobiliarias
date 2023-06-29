@@ -8,6 +8,7 @@ import MapView from '../Map/MapView';
 import departmentIcon from "../../assets/department_location_icon.svg";
 import houseIcon from "../../assets/house_location_icon.svg";
 import landIcon from "../../assets/land_location_icon.svg";
+import "./Property.css"
 
 const Property = () => {
     const { sendRequest } = useFetch();
@@ -81,9 +82,7 @@ const Property = () => {
 
             </div >
             <div className='property-container'>
-                <div className="map-container">
-                    <MapView defaultLocation={defaultLocation} locations={property} />
-                </div>
+                <MapView defaultLocation={defaultLocation} locations={property} />
                 <div>
                     <p className="property-info-map"><img src={departmentIcon} width='10%' height='10%' /> Departamentos</p>
                     <p className="property-info-map"><img src={houseIcon} width='10%' height='10%' /> Casas</p>
@@ -97,5 +96,3 @@ const Property = () => {
 };
 
 export default Property;
-
-

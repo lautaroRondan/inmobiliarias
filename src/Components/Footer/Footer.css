@@ -1,0 +1,15 @@
+.footer {
+  border-top: 5px solid black;
+  background: #fff;
+  grid-area: footer;
+  display: block;
+}
+
+.footer .copyright {
+  display: flex;
+  padding-left: 1%;
+}
+
+.footer .copyright p {
+  color: #090718;
+}
